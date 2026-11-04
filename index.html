@@ -321,7 +321,7 @@
         <!-- TAB 2: TRẮC NGHIỆM -->
         <div id="quiz" class="tab-content">
             <div id="quiz-container">
-                <!-- Danh sách 36 câu hỏi trắc nghiệm sẽ tự động load tại đây -->
+                <!-- Danh sách câu hỏi trắc nghiệm sẽ tự động load tại đây -->
             </div>
             <button class="btn" onclick="submitQuiz()" style="width: 100%; max-width: 100%; margin-top: 20px;">Nộp bài & Lưu kết quả</button>
         </div>
@@ -441,7 +441,6 @@
         { q: "Năm 40 TCN diễn ra sự kiện lịch sử quan trọng nào ở nước ta?", opts: ["A. Ngô Quyền đánh tan quân Nam Hán", "B. Hai Bà Trưng phất cờ khởi nghĩa chống quân Đông Hán", "C. Lý Bí lập nước Vạn Xuân", "D. Khởi nghĩa Lam Sơn thắng lợi"], ans: "B" }
     ];
 
-    // Khởi tạo giao diện câu hỏi trắc nghiệm
     function renderQuiz() {
         const container = document.getElementById('quiz-container');
         let html = '';
@@ -461,7 +460,6 @@
         container.innerHTML = html;
     }
 
-    // Xử lý đăng nhập & tab
     function handleLogin() {
         const username = document.getElementById('username-input').value.trim();
         if (!username) {
@@ -498,7 +496,7 @@
         quizData.forEach((item, idx) => {
             const selected = document.querySelector(`input[name="q${idx}"]:checked`);
             if (selected && selected.value === item.ans) {
-                score += (10 / quizData.length); // Chia đều điểm tối đa là 10
+                score += (10 / quizData.length);
             }
         });
 
