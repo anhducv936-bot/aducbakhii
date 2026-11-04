@@ -298,7 +298,7 @@
         <!-- TAB 1: FLASHCARD -->
         <div id="flashcard" class="tab-content active">
             <div style="text-align: center; margin-bottom: 10px;">
-                <span id="card-counter" style="font-size: 14px; color: var(--text-light);">Thẻ 1 / 5</span>
+                <span id="card-counter" style="font-size: 14px; color: var(--text-light);">Thẻ 1 / 10</span>
             </div>
             <div class="flashcard-container" onclick="flipCard()">
                 <div class="card-inner" id="cardInner">
@@ -320,25 +320,10 @@
 
         <!-- TAB 2: TRẮC NGHIỆM -->
         <div id="quiz" class="tab-content">
-            <div class="question-box">
-                <p>Câu 1: Đối tượng nghiên cứu của khoa học lịch sử là gì?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="A"> A. Tương lai của xã hội loài người.</label>
-                    <label><input type="radio" name="q1" value="B"> B. Toàn bộ quá khứ của loài người từ khi xuất hiện đến nay.</label>
-                    <label><input type="radio" name="q1" value="C"> C. Các quy luật phát triển của tự nhiên.</label>
-                    <label><input type="radio" name="q1" value="D"> D. Sự phát triển kinh tế trong hiện tại.</label>
-                </div>
+            <div id="quiz-container">
+                <!-- Danh sách 36 câu hỏi trắc nghiệm sẽ tự động load tại đây -->
             </div>
-            <div class="question-box">
-                <p>Câu 2: Yếu tố nào dưới đây là nguồn sử liệu quan trọng nhất để khôi phục lịch sử thời kỳ cổ đại?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="A"> A. Sử liệu truyền miệng.</label>
-                    <label><input type="radio" name="q2" value="B"> B. Sử liệu hiện vật (khảo cổ học).</label>
-                    <label><input type="radio" name="q2" value="C"> C. Sử liệu ảnh tư liệu.</label>
-                    <label><input type="radio" name="q2" value="D"> D. Tài liệu điện tử.</label>
-                </div>
-            </div>
-            <button class="btn" onclick="submitQuiz()" style="width: 100%; max-width: 100%;">Nộp bài & Lưu kết quả</button>
+            <button class="btn" onclick="submitQuiz()" style="width: 100%; max-width: 100%; margin-top: 20px;">Nộp bài & Lưu kết quả</button>
         </div>
 
         <!-- TAB 3: TỰ LUẬN & TƯ LIỆU -->
@@ -377,13 +362,18 @@
 </div>
 
 <script>
-    // Dữ liệu Flashcard
+    // Dữ liệu Flashcard mở rộng
     const flashcards = [
-        { front: "Lịch sử là gì?", back: "Toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người." },
+        { front: "Lịch sử là gì?", back: "Là toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người." },
         { front: "Hiện thực lịch sử là gì?", back: "Là tất cả những gì đã diễn ra trong quá khứ, tồn tại khách quan không phụ thuộc vào ý muốn của con người." },
         { front: "Nhận thức lịch sử là gì?", back: "Là toàn bộ những tri thức, hiểu biết, sự suy nghĩ và tình cảm của con người về quá khứ." },
         { front: "Sử liệu học là gì?", back: "Là hệ thống tư liệu (vật chất, chữ viết, truyền miệng...) cung cấp thông tin về quá khứ." },
-        { front: "Mối quan hệ Sử học và Du lịch?", back: "Lịch sử cung cấp tài nguyên, giá trị cốt lõi cho du lịch văn hóa; du lịch tạo nguồn lực hỗ trợ bảo tồn di sản." }
+        { front: "Mối quan hệ Sử học và Du lịch?", back: "Lịch sử cung cấp tài nguyên, giá trị cốt lõi cho du lịch văn hóa; du lịch tạo nguồn lực hỗ trợ bảo tồn di sản." },
+        { front: "Chức năng xã hội của Sử học?", back: "Giáo dục, bồi dưỡng lòng yêu nước, tinh thần dân tộc và cung cấp tri thức khoa học cho cuộc sống." },
+        { front: "Nhiệm vụ của Sử học?", back: "Khôi phục hiện thực lịch sử chính xác và rút ra bài học kinh nghiệm cho hiện tại, tương lai." },
+        { front: "Khảo cổ học thuộc loại sử liệu nào?", back: "Sử liệu hiện vật (vật chất)." },
+        { front: "Nguyên lý cơ bản của lịch sử?", back: "Tính khách quan, tính kế thừa và tính cụ thể." },
+        { front: "Ý nghĩa học tập lịch sử suốt đời?", back: "Giúp con người cập nhật tri thức, mở rộng tầm nhìn, thích ứng với sự phát triển của xã hội." }
     ];
 
     let currentCardIndex = 0;
@@ -409,6 +399,66 @@
         currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
         updateCard();
         event.stopPropagation();
+    }
+
+    // Dữ liệu 36 câu hỏi trắc nghiệm Lịch sử 10
+    const quizData = [
+        { q: "Đối tượng nghiên cứu của khoa học lịch sử là gì?", opts: ["A. Tương lai của xã hội loài người.", "B. Toàn bộ quá khứ của loài người từ khi xuất hiện đến nay.", "C. Các quy luật phát triển của tự nhiên.", "D. Sự phát triển kinh tế trong hiện tại."], ans: "B" },
+        { q: "Yếu tố nào dưới đây là nguồn sử liệu quan trọng nhất để khôi phục lịch sử thời kỳ cổ đại?", opts: ["A. Sử liệu truyền miệng.", "B. Sử liệu hiện vật (khảo cổ học).", "C. Sử liệu ảnh tư liệu.", "D. Tài liệu điện tử."], ans: "B" },
+        { q: "Hiện thực lịch sử có đặc điểm gì nổi bật?", opts: ["A. Có thể thay đổi theo ý muốn con người.", "B. Tồn tại khách quan, không phụ thuộc vào ý muốn chủ quan.", "C. Do con người sáng tạo ra trong nhận thức.", "D. Luôn mang tính chủ quan sâu sắc."], ans: "B" },
+        { q: "Nhận thức lịch sử khác biệt với hiện thực lịch sử ở điểm nào?", opts: ["A. Tồn tại khách quan.", "B. Không thể thay đổi.", "C. Mang tính chủ quan của người nghiên cứu.", "D. Phản ánh đúng 100% quá khứ."], ans: "C" },
+        { q: "Loại sử liệu nào cung cấp thông tin trực tiếp từ người chứng kiến sự kiện?", opts: ["A. Sử liệu truyền miệng", "B. Sử liệu hiện vật", "C. Sử liệu thành văn (chữ viết)", "D. Sử liệu trực quan"], ans: "C" },
+        { q: "Mối quan hệ giữa Sử học và công tác bảo tồn di sản là gì?", opts: ["A. Đối lập nhau.", "B. Sử học cung cấp cơ sở khoa học cho bảo tồn.", "C. Bảo tồn không cần đến sử học.", "D. Sử học chỉ mang tính lý thuyết suông."], ans: "B" },
+        { q: "Nội dung nào phản ánh đúng ý nghĩa của việc học tập lịch sử suốt đời?", opts: ["A. Chỉ phục vụ cho việc thi cử.", "B. Giúp cập nhật và mở rộng tri thức, thích ứng cuộc sống.", "C. Chỉ dành cho các nhà nghiên cứu.", "D. Không có giá trị thực tiễn."], ans: "B" },
+        { q: "Sử liệu nào dưới đây thuộc nhóm sử liệu truyền miệng?", opts: ["A. Thần thoại, truyền thuyết, ca dao", "B. Công cụ lao động bằng đá", "C. Bản, mộc bản triều Nguyễn", "D. Bia đá khắc chữ"], ans: "A" },
+        { q: "Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam do ai soạn thảo?", opts: ["A. Phan Bội Châu", "B. Nguyễn Ái Quốc", "C. Trần Phú", "D. Hồ Chí Minh"], ans: "B" },
+        { q: "Sự kiện nào đánh dấu mốc mở đầu thời kì lịch sử cận đại thế giới?", opts: ["A. Cách mạng tư sản Pháp 1789", "B. Cách mạng tháng Mười Nga 1917", "C. Phát kiến địa lý", "D. Chiến tranh thế giới thứ nhất"], ans: "A" },
+        { q: "Nền văn minh nào nằm lưu vực sông Nin?", opts: ["A. Lưỡng Hà", "B. Ấn Độ", "C. Ai Cập cổ đại", "D. Trung Hoa"], ans: "C" },
+        { q: "Chữ viết cổ của người Ai Cập cổ đại là gì?", opts: ["A. Chữ tượng hình", "B. Chữ hình nêm", "C. Chữ Phạn", "D. Chữ La-tinh"], ans: "A" },
+        { q: "Công trình kiến trúc nổi tiếng nào của Lưỡng Hà cổ đại được ví như kỳ quan?", opts: ["A. Kim tự tháp Giza", "B. Vườn treo Babylon", "C. Vạn Lý Trường Thành", "D. Đấu trường Colosseum"], ans: "B" },
+        { q: "Tôn giáo nào ra đời ở Ấn Độ thời cổ đại và sau đó lan truyền rộng rãi?", opts: ["A. Hồi giáo", "B. Thiên Chúa giáo", "C. Phật giáo", "D. Do Thái giáo"], ans: "C" },
+        { q: "Triết học nào có ảnh hưởng sâu sắc nhất đến phong kiến Trung Hoa?", opts: ["A. Nho giáo", "B. Chủ nghĩa khắc kỷ", "C. Phật giáo", "D. Đạo giáo"], ans: "A" },
+        { q: "Ai Cập cổ đại nổi tiếng với thành tựu toán học nào?", opts: ["A. Định lý Pytago", "B. Hệ đếm thập phân và hình học tính diện tích", "C. Số Pi chính xác đến 10 chữ số", "D. Lượng giác học"], ans: "B" },
+        { q: "Ý nghĩa lớn nhất của việc phát minh ra chữ viết là gì?", opts: ["A. Giúp trang trí công trình", "B. Lưu giữ tri thức và truyền lại cho đời sau", "C. Phục vụ việc buôn bán", "D. Dùng để khắc đá"], ans: "B" },
+        { q: "Chế độ xã hội phổ biến ở phương Đông cổ đại là gì?", opts: ["A. Chiếm hữu nô lệ", "B. Phong kiến tập quyền", "C. Nhà nước chuyên chế cổ đại", "D. Tư bản chủ nghĩa"], ans: "C" },
+        { q: "Chế độ xã hội phổ biến ở phương Tây cổ đại (Hy Lạp, Rô-ma) là gì?", opts: ["A. Chiếm hữu nô lệ", "B. Xã hội nguyên thủy", "C. Phong kiến phân quyền", "D. Xã hội công xã"], ans: "A" },
+        { q: "Đặc điểm kinh tế chủ đạo của các quốc gia cổ đại phương Đông là gì?", opts: ["A. Thương nghiệp biển", "B. Nông nghiệp lúa nước", "C. Chăn nuôi du mục", "D. Công nghiệp thủ công"], ans: "B" },
+        { q: "Đặc điểm kinh tế chủ đạo của các quốc gia cổ đại phương Tây là gì?", opts: ["A. Nông nghiệp thâm canh", "B. Thủ công nghiệp và thương nghiệp biển", "C. Trồng lúa nước", "D. Khai thác mỏ"], ans: "B" },
+        { q: "Phát minh quan trọng nào giúp con người bắt đầu bước vào thời đại kim khí?", opts: ["A. Luyện đồng và sắt", "B. Chế tạo lửa", "C. Làm gốm", "D. Chế tạo cung tên"], ans: "A" },
+        { q: "Người nguyên thủy ở Việt Nam đã biết sử dụng công cụ bằng đá qua kỹ thuật gì?", opts: ["A. Ghè đẽo, mài đá, cưa đá", "B. Đúc gang", "C. Luyện thép", "D. Hàn kim loại"], ans: "A" },
+        { q: "Nền văn hóa khảo cổ mở đầu thời đại đồng thau ở Việt Nam là gì?", opts: ["A. Văn hóa Phùng Nguyên", "B. Văn hóa Đông Sơn", "C. Văn hóa Sa Huỳnh", "D. Văn hóa Óc Eo"], ans: "A" },
+        { q: "Đỉnh cao của văn hóa đồ đồng ở Việt Nam ứng với nền văn hóa nào?", opts: ["A. Văn hóa Đông Sơn", "B. Văn hóa Đa Bút", "C. Văn hóa Hòa Bình", "D. Văn hóa Bắc Sơn"], ans: "A" },
+        { q: "Trống đồng Đông Sơn là biểu trưng cho điều gì?", opts: ["A. Kỹ thuật luyện kim và văn hóa đỉnh cao của cư dân Việt cổ", "B. Nền văn minh lúa nước thuần túy", "C. Nền thương nghiệp đường biển phát triển", "D. Kiến trúc cung đình"], ans: "A" },
+        { q: "Nhà nước đầu tiên trong lịch sử Việt Nam là gì?", opts: ["A. Văn Lang - Âu Lạc", "B. Đại Cồ Việt", "C. Đại Việt", "D. Vạn Xuân"], ans: "A" },
+        { q: "Kinh đô của nhà nước Văn Lang đặt ở đâu?", opts: ["A. Cổ Loa (Đông Anh, Hà Nội)", "B. Phong Châu (Phú Thọ)", "C. Hoa Lư (Ninh Bình)", "D. Thăng Long (Hà Nội)"], ans: "B" },
+        { q: "Người đứng đầu nhà nước Văn Lang có vương hiệu là gì?", opts: ["A. Hoàng đế", "B. Hùng Vương", "C. Thiên tử", "D. Quốc vương"], ans: "B" },
+        { q: "Kinh đô của nhà nước Âu Lạc (An Dương Vương) đặt ở đâu?", opts: ["A. Phong Châu", "B. Cổ Loa", "C. Thiên Trường", "D. Phú Xuân"], ans: "B" },
+        { q: "Thành Cổ Loa được thiết kế theo kiểu kiến trúc độc đáo nào?", opts: ["A. Hình vuông nhiều lớp", "B. Hình xoắn ốc (Loa thành)", "C. Hình chữ nhật kiên cố", "D. Hình tròn khép kín"], ans: "B" },
+        { q: "Loại vũ khí nổi tiếng nào gắn liền với truyền thuyết nỏ thần An Dương Vương?", opts: ["A. Nỏ bắn nhiều mũi tên (nỏ liên châu)", "B. Cung tên đồng", "C. Giáo dài", "D. Kiếm ngắn"], ans: "A" },
+        { q: "Nguyên nhân chính dẫn đến sự sụp đổ của nhà nước Âu Lạc vào năm 179 TCN là gì?", opts: ["A. Do thiên tai lũ lụt", "B. Do nội bộ mất đoàn kết và sự tấn công của Triệu Đà", "C. Do dịch bệnh bùng phát", "D. Do nhân dân nổi dậy lật đổ"], ans: "B" },
+        { q: "Thời kỳ Bắc thuộc trong lịch sử Việt Nam kéo dài khoảng bao nhiêu năm?", opts: ["A. Hơn 500 năm", "B. Gần 1000 năm", "C. 50 năm", "D. 200 năm"], ans: "B" },
+        { q: "Cuộc khởi nghĩa mở đầu thời kỳ đấu tranh chống Bắc thuộc của nhân dân ta là gì?", opts: ["A. Khởi nghĩa Hai Bà Trưng", "B. Khởi nghĩa Bà Triệu", "C. Khởi nghĩa Lý Bí", "D. Khởi nghĩa Mai Hắc Đế"], ans: "A" },
+        { q: "Năm 40 TCN diễn ra sự kiện lịch sử quan trọng nào ở nước ta?", opts: ["A. Ngô Quyền đánh tan quân Nam Hán", "B. Hai Bà Trưng phất cờ khởi nghĩa chống quân Đông Hán", "C. Lý Bí lập nước Vạn Xuân", "D. Khởi nghĩa Lam Sơn thắng lợi"], ans: "B" }
+    ];
+
+    // Khởi tạo giao diện câu hỏi trắc nghiệm
+    function renderQuiz() {
+        const container = document.getElementById('quiz-container');
+        let html = '';
+        quizData.forEach((item, idx) => {
+            html += `
+                <div class="question-box">
+                    <p>Câu ${idx + 1}: ${item.q}</p>
+                    <div class="options">
+                        <label><input type="radio" name="q${idx}" value="A"> ${item.opts[0]}</label>
+                        <label><input type="radio" name="q${idx}" value="B"> ${item.opts[1]}</label>
+                        <label><input type="radio" name="q${idx}" value="C"> ${item.opts[2]}</label>
+                        <label><input type="radio" name="q${idx}" value="D"> ${item.opts[3]}</label>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
     }
 
     // Xử lý đăng nhập & tab
@@ -445,18 +495,19 @@
 
     function submitQuiz() {
         let score = 0;
-        const q1 = document.querySelector('input[name="q1"]:checked');
-        const q2 = document.querySelector('input[name="q2"]:checked');
+        quizData.forEach((item, idx) => {
+            const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+            if (selected && selected.value === item.ans) {
+                score += (10 / quizData.length); // Chia đều điểm tối đa là 10
+            }
+        });
 
-        if (q1 && q1.value === 'B') score += 5;
-        if (q2 && q2.value === 'B') score += 5;
-
-        alert(`Bạn đạt được ${score}/10 điểm!`);
+        const finalScore = Math.round(score * 10) / 10;
+        alert(`Bạn đạt được ${finalScore}/10 điểm!`);
         
-        // Lưu điểm vào LocalStorage cho Bảng xếp hạng
         const username = localStorage.getItem('history_user') || 'Học sinh ẩn danh';
         let lb = JSON.parse(localStorage.getItem('history_lb') || '[]');
-        lb.push({ name: username, score: score });
+        lb.push({ name: username, score: finalScore });
         lb.sort((a, b) => b.score - a.score);
         localStorage.setItem('history_lb', JSON.stringify(lb));
 
@@ -488,6 +539,7 @@
     }
 
     window.onload = function() {
+        renderQuiz();
         const savedUser = localStorage.getItem('history_user');
         if (savedUser) {
             showApp(savedUser);
