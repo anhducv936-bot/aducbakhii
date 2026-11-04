@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn Tập Giữa Kì Lịch Sử 10 - THPT Uông Bí</title>
+    <title>Ôn Tập Lịch Sử 10 - Giữa Kì I</title>
     <style>
         :root {
             --primary: #1a73e8;
@@ -55,7 +55,6 @@
             font-size: 14px;
         }
 
-        /* Login Screen */
         #login-screen {
             text-align: center;
             padding: 40px 20px;
@@ -70,11 +69,6 @@
             border-radius: 8px;
             margin-bottom: 16px;
             outline: none;
-            transition: border-color 0.3s;
-        }
-
-        #login-screen input:focus {
-            border-color: var(--primary);
         }
 
         .btn {
@@ -86,7 +80,6 @@
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
             width: 100%;
             max-width: 320px;
         }
@@ -95,7 +88,6 @@
             background-color: var(--primary-dark);
         }
 
-        /* App Layout */
         #app-screen {
             display: none;
         }
@@ -128,7 +120,6 @@
             font-size: 14px;
             font-weight: 500;
             white-space: nowrap;
-            transition: all 0.2s;
         }
 
         .tab-btn.active {
@@ -145,7 +136,7 @@
             display: block;
         }
 
-        /* Flashcard 3D Styles */
+        /* Flashcard 3D */
         .flashcard-container {
             perspective: 1000px;
             width: 100%;
@@ -215,7 +206,6 @@
             margin-top: 16px;
         }
 
-        /* Quiz & Essay Styles */
         .question-box {
             margin-bottom: 20px;
             padding: 16px;
@@ -237,7 +227,6 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
         .options label:hover {
@@ -248,7 +237,6 @@
             margin-right: 8px;
         }
 
-        /* Leaderboard */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -271,17 +259,15 @@
 
 <div class="container">
     <h1>Ôn Tập Lịch Sử 10</h1>
-    <p class="subtitle">THPT Uông Bí - Kỳ thi Giữa kì</p>
+    <p class="subtitle">Đúng chuẩn nội dung Giữa Kì I</p>
 
-    <!-- ĐĂNG NHẬP -->
     <div id="login-screen">
-        <p style="margin-bottom: 16px; color: var(--text-light);">Nhập tên hoặc mã số của bạn để bắt đầu làm bài và lưu điểm:</p>
+        <p style="margin-bottom: 16px; color: var(--text-light);">Nhập tên hoặc mã số của bạn để bắt đầu ôn tập và lưu điểm:</p>
         <input type="text" id="username-input" placeholder="Ví dụ: Nguyễn Văn A - 10A1">
         <br>
         <button class="btn" onclick="handleLogin()">Vào Ôn Tập</button>
     </div>
 
-    <!-- GIAO DIỆN CHÍNH -->
     <div id="app-screen">
         <div class="user-welcome">
             <span>Xin chào, <strong id="display-user"></strong>!</span>
@@ -289,25 +275,25 @@
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('flashcard')">Flashcard 3D</button>
-            <button class="tab-btn" onclick="switchTab('quiz')">Trắc nghiệm</button>
-            <button class="tab-btn" onclick="switchTab('essay')">Tự luận & Tư liệu</button>
+            <button class="tab-btn active" onclick="switchTab('flashcard')">Flashcard chuẩn</button>
+            <button class="tab-btn" onclick="switchTab('quiz')">Trắc nghiệm & Đúng/Sai</button>
+            <button class="tab-btn" onclick="switchTab('essay')">Tự luận cốt lõi</button>
             <button class="tab-btn" onclick="switchTab('leaderboard')">Bảng xếp hạng</button>
         </div>
 
-        <!-- TAB 1: FLASHCARD -->
+        <!-- FLASHCARD -->
         <div id="flashcard" class="tab-content active">
             <div style="text-align: center; margin-bottom: 10px;">
-                <span id="card-counter" style="font-size: 14px; color: var(--text-light);">Thẻ 1 / 10</span>
+                <span id="card-counter" style="font-size: 14px; color: var(--text-light);">Thẻ 1 / 4</span>
             </div>
             <div class="flashcard-container" onclick="flipCard()">
                 <div class="card-inner" id="cardInner">
                     <div class="card-front">
-                        <span id="card-front-text">Lịch sử là gì?</span>
+                        <span id="card-front-text">Khái niệm Lịch sử</span>
                         <span class="card-hint">(Chạm để lật xem đáp án)</span>
                     </div>
                     <div class="card-back">
-                        <span id="card-back-text">Là toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người.</span>
+                        <span id="card-back-text">Tất cả những gì đã diễn ra trong quá khứ của xã hội loài người...</span>
                         <span class="card-hint">(Chạm để quay lại)</span>
                     </div>
                 </div>
@@ -318,33 +304,73 @@
             </div>
         </div>
 
-        <!-- TAB 2: TRẮC NGHIỆM -->
+        <!-- TRẮC NGHIỆM & ĐÚNG SAI -->
         <div id="quiz" class="tab-content">
-            <div id="quiz-container">
-                <!-- Danh sách câu hỏi trắc nghiệm sẽ tự động load tại đây -->
+            <h3 style="margin-bottom: 16px; color: var(--primary);">I. Câu hỏi trắc nghiệm nhiều lựa chọn</h3>
+            <div id="quiz-container"></div>
+            
+            <h3 style="margin: 24px 0 16px 0; color: var(--primary);">II. Câu hỏi Đúng / Sai</h3>
+            <div id="truesfalse-container">
+                <div class="question-box">
+                    <p>Câu hỏi Đ/S 1: Lịch sử được con người nhận thức luôn phản ánh hoàn toàn chính xác 100% hiện thực khách quan và không bao giờ thay đổi.</p>
+                    <div class="options">
+                        <label><input type="radio" name="ds1" value="D"> Đúng</label>
+                        <label><input type="radio" name="ds1" value="S"> Sai</label>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <p>Câu hỏi Đ/S 2: Sử học đóng vai trò là cơ sở khoa học cốt lõi để xác định giá trị và bảo tồn các di sản văn hóa.</p>
+                    <div class="options">
+                        <label><input type="radio" name="ds2" value="D"> Đúng</label>
+                        <label><input type="radio" name="ds2" value="S"> Sai</label>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <p>Câu hỏi Đ/S 3: Hiện thực lịch sử là những gì con người tưởng tượng, dựng lại về những chuyện đã xảy ra trong quá khứ.</p>
+                    <div class="options">
+                        <label><input type="radio" name="ds3" value="D"> Đúng</label>
+                        <label><input type="radio" name="ds3" value="S"> Sai</label>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <p>Câu hỏi Đ/S 4: Việc học tập lịch sử chỉ có ý nghĩa đối với các nhà nghiên cứu chuyên sâu, không có giá trị thực tiễn cho học sinh phổ thông.</p>
+                    <div class="options">
+                        <label><input type="radio" name="ds4" value="D"> Đúng</label>
+                        <label><input type="radio" name="ds4" value="S"> Sai</label>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <p>Câu hỏi Đ/S 5: Du lịch phát triển mạnh sẽ tạo ra nguồn tài chính quan trọng hỗ trợ cho công tác trùng tu và bảo tồn di sản.</p>
+                    <div class="options">
+                        <label><input type="radio" name="ds5" value="D"> Đúng</label>
+                        <label><input type="radio" name="ds5" value="S"> Sai</label>
+                    </div>
+                </div>
             </div>
+
             <button class="btn" onclick="submitQuiz()" style="width: 100%; max-width: 100%; margin-top: 20px;">Nộp bài & Lưu kết quả</button>
         </div>
 
-        <!-- TAB 3: TỰ LUẬN & TƯ LIỆU -->
+        <!-- TỰ LUẬN -->
         <div id="essay" class="tab-content">
             <div class="question-box">
-                <p>Câu hỏi Tự luận 1: Phân tích mối quan hệ giữa lịch sử, văn hóa với sự phát triển du lịch tại Hạ Long Bay hoặc Yên Tử.</p>
+                <p>Câu hỏi 1: Phân biệt Hiện thực lịch sử và Lịch sử được con người nhận thức?</p>
                 <p style="font-size: 14px; color: var(--text-light); margin-top: 8px;">
-                    <strong>Gợi ý trả lời:</strong> Các di sản văn hóa và lịch sử (như quần thể di tích Yên Tử, vịnh Hạ Long) cung cấp giá trị cốt lõi, nguồn tài nguyên nhân văn phong phú để phát triển du lịch bền vững, thu hút du khách trong và ngoài nước, đồng thời du lịch quay lại hỗ trợ bảo tồn di sản.
+                    <strong>Đáp án ngắn gọn:</strong> Hiện thực lịch sử tồn tại khách quan, không thay đổi được; còn lịch sử được con người nhận thức mang tính chủ quan, có thể thay đổi và bổ sung theo thời gian cùng nguồn sử liệu mới.
                 </p>
             </div>
             <div class="question-box">
-                <p>Câu hỏi Tự luận 2: Ý nghĩa của việc học tập lịch sử suốt đời trong xã hội hiện đại.</p>
+                <p>Câu hỏi 2: Mối quan hệ giữa Sử học với công tác bảo tồn di sản văn hóa và du lịch tại Hạ Long/Yên Tử?</p>
                 <p style="font-size: 14px; color: var(--text-light); margin-top: 8px;">
-                    <strong>Gợi ý trả lời:</strong> Giúp cập nhật tri thức mới, bồi dưỡng lòng yêu nước, tư duy phản biện, và thích ứng linh hoạt với sự thay đổi của xã hội hiện đại.
+                    <strong>Đáp án ngắn gọn:</strong> Sử học cung cấp cơ sở khoa học để xác định giá trị cốt lõi di sản; ngược lại du lịch quảng bá giá trị lịch sử và tạo nguồn thu tài chính bảo tồn bền vững.
                 </p>
             </div>
         </div>
 
-        <!-- TAB 4: BẢNG XẾP HẠNG -->
+        <!-- BẢNG XẾP HẠNG -->
         <div id="leaderboard" class="tab-content">
             <h3 style="margin-bottom: 12px; color: var(--primary);">Bảng xếp hạng học sinh</h3>
+            <p style="font-size: 13px; color: var(--text-light); margin-bottom: 12px;">Hệ thống lưu điểm chung qua không gian mạng công khai.</p>
             <table>
                 <thead>
                     <tr>
@@ -353,92 +379,45 @@
                         <th>Điểm số</th>
                     </tr>
                 </thead>
-                <tbody id="leaderboard-body">
-                    <!-- Dữ liệu sẽ tự động điền -->
-                </tbody>
+                <tbody id="leaderboard-body"></tbody>
             </table>
         </div>
     </div>
 </div>
 
 <script>
-    // Dữ liệu Flashcard mở rộng
     const flashcards = [
-        { front: "Lịch sử là gì?", back: "Là toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người." },
-        { front: "Hiện thực lịch sử là gì?", back: "Là tất cả những gì đã diễn ra trong quá khứ, tồn tại khách quan không phụ thuộc vào ý muốn của con người." },
-        { front: "Nhận thức lịch sử là gì?", back: "Là toàn bộ những tri thức, hiểu biết, sự suy nghĩ và tình cảm của con người về quá khứ." },
-        { front: "Sử liệu học là gì?", back: "Là hệ thống tư liệu (vật chất, chữ viết, truyền miệng...) cung cấp thông tin về quá khứ." },
-        { front: "Mối quan hệ Sử học và Du lịch?", back: "Lịch sử cung cấp tài nguyên, giá trị cốt lõi cho du lịch văn hóa; du lịch tạo nguồn lực hỗ trợ bảo tồn di sản." },
-        { front: "Chức năng xã hội của Sử học?", back: "Giáo dục, bồi dưỡng lòng yêu nước, tinh thần dân tộc và cung cấp tri thức khoa học cho cuộc sống." },
-        { front: "Nhiệm vụ của Sử học?", back: "Khôi phục hiện thực lịch sử chính xác và rút ra bài học kinh nghiệm cho hiện tại, tương lai." },
-        { front: "Khảo cổ học thuộc loại sử liệu nào?", back: "Sử liệu hiện vật (vật chất)." },
-        { front: "Nguyên lý cơ bản của lịch sử?", back: "Tính khách quan, tính kế thừa và tính cụ thể." },
-        { front: "Ý nghĩa học tập lịch sử suốt đời?", back: "Giúp con người cập nhật tri thức, mở rộng tầm nhìn, thích ứng với sự phát triển của xã hội." }
+        { front: "Khái niệm Lịch sử", back: "Tất cả những gì đã diễn ra trong quá khứ của xã hội loài người; hoặc những hiểu biết của con người về quá khứ được tái hiện lại.", hint: "Bao gồm cả quá khứ thực tế và những gì con người nhận thức được." },
+        { front: "Khái niệm Hiện thực lịch sử", back: "Toàn bộ những gì đã diễn ra trong quá khứ, tồn tại hoàn toàn khách quan, độc lập ngoài ý muốn con người và không thể thay đổi.", hint: "Sự việc đã xảy ra trong thực tế, chỉ diễn ra một lần duy nhất." },
+        { front: "Khái niệm Lịch sử được con người nhận thức", back: "Toàn bộ những tri thức, hiểu biết của con người về hiện thực lịch sử, được tái hiện qua lời kể, sách báo, phim ảnh,...", hint: "Góc nhìn, ghi chép và đánh giá của con người về quá khứ." },
+        { front: "Đối tượng nghiên cứu của Sử học", back: "Toàn bộ quá khứ của loài người trên tất cả các lĩnh vực (chính trị, kinh tế, văn hóa, xã hội, quân sự,...).", hint: "Mọi hoạt động của loài người từ xưa đến nay." }
     ];
 
     let currentCardIndex = 0;
-
     function updateCard() {
         document.getElementById('card-front-text').innerText = flashcards[currentCardIndex].front;
         document.getElementById('card-back-text').innerText = flashcards[currentCardIndex].back;
         document.getElementById('card-counter').innerText = `Thẻ ${currentCardIndex + 1} / ${flashcards.length}`;
         document.getElementById('cardInner').classList.remove('flipped');
     }
+    function flipCard() { document.getElementById('cardInner').classList.toggle('flipped'); }
+    function nextCard() { currentCardIndex = (currentCardIndex + 1) % flashcards.length; updateCard(); event.stopPropagation(); }
+    function prevCard() { currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length; updateCard(); event.stopPropagation(); }
 
-    function flipCard() {
-        document.getElementById('cardInner').classList.toggle('flipped');
-    }
-
-    function nextCard() {
-        currentCardIndex = (currentCardIndex + 1) % flashcards.length;
-        updateCard();
-        event.stopPropagation();
-    }
-
-    function prevCard() {
-        currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
-        updateCard();
-        event.stopPropagation();
-    }
-
-    // Dữ liệu 36 câu hỏi trắc nghiệm Lịch sử 10
     const quizData = [
-        { q: "Đối tượng nghiên cứu của khoa học lịch sử là gì?", opts: ["A. Tương lai của xã hội loài người.", "B. Toàn bộ quá khứ của loài người từ khi xuất hiện đến nay.", "C. Các quy luật phát triển của tự nhiên.", "D. Sự phát triển kinh tế trong hiện tại."], ans: "B" },
-        { q: "Yếu tố nào dưới đây là nguồn sử liệu quan trọng nhất để khôi phục lịch sử thời kỳ cổ đại?", opts: ["A. Sử liệu truyền miệng.", "B. Sử liệu hiện vật (khảo cổ học).", "C. Sử liệu ảnh tư liệu.", "D. Tài liệu điện tử."], ans: "B" },
-        { q: "Hiện thực lịch sử có đặc điểm gì nổi bật?", opts: ["A. Có thể thay đổi theo ý muốn con người.", "B. Tồn tại khách quan, không phụ thuộc vào ý muốn chủ quan.", "C. Do con người sáng tạo ra trong nhận thức.", "D. Luôn mang tính chủ quan sâu sắc."], ans: "B" },
-        { q: "Nhận thức lịch sử khác biệt với hiện thực lịch sử ở điểm nào?", opts: ["A. Tồn tại khách quan.", "B. Không thể thay đổi.", "C. Mang tính chủ quan của người nghiên cứu.", "D. Phản ánh đúng 100% quá khứ."], ans: "C" },
-        { q: "Loại sử liệu nào cung cấp thông tin trực tiếp từ người chứng kiến sự kiện?", opts: ["A. Sử liệu truyền miệng", "B. Sử liệu hiện vật", "C. Sử liệu thành văn (chữ viết)", "D. Sử liệu trực quan"], ans: "C" },
-        { q: "Mối quan hệ giữa Sử học và công tác bảo tồn di sản là gì?", opts: ["A. Đối lập nhau.", "B. Sử học cung cấp cơ sở khoa học cho bảo tồn.", "C. Bảo tồn không cần đến sử học.", "D. Sử học chỉ mang tính lý thuyết suông."], ans: "B" },
-        { q: "Nội dung nào phản ánh đúng ý nghĩa của việc học tập lịch sử suốt đời?", opts: ["A. Chỉ phục vụ cho việc thi cử.", "B. Giúp cập nhật và mở rộng tri thức, thích ứng cuộc sống.", "C. Chỉ dành cho các nhà nghiên cứu.", "D. Không có giá trị thực tiễn."], ans: "B" },
-        { q: "Sử liệu nào dưới đây thuộc nhóm sử liệu truyền miệng?", opts: ["A. Thần thoại, truyền thuyết, ca dao", "B. Công cụ lao động bằng đá", "C. Bản, mộc bản triều Nguyễn", "D. Bia đá khắc chữ"], ans: "A" },
-        { q: "Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam do ai soạn thảo?", opts: ["A. Phan Bội Châu", "B. Nguyễn Ái Quốc", "C. Trần Phú", "D. Hồ Chí Minh"], ans: "B" },
-        { q: "Sự kiện nào đánh dấu mốc mở đầu thời kì lịch sử cận đại thế giới?", opts: ["A. Cách mạng tư sản Pháp 1789", "B. Cách mạng tháng Mười Nga 1917", "C. Phát kiến địa lý", "D. Chiến tranh thế giới thứ nhất"], ans: "A" },
-        { q: "Nền văn minh nào nằm lưu vực sông Nin?", opts: ["A. Lưỡng Hà", "B. Ấn Độ", "C. Ai Cập cổ đại", "D. Trung Hoa"], ans: "C" },
-        { q: "Chữ viết cổ của người Ai Cập cổ đại là gì?", opts: ["A. Chữ tượng hình", "B. Chữ hình nêm", "C. Chữ Phạn", "D. Chữ La-tinh"], ans: "A" },
-        { q: "Công trình kiến trúc nổi tiếng nào của Lưỡng Hà cổ đại được ví như kỳ quan?", opts: ["A. Kim tự tháp Giza", "B. Vườn treo Babylon", "C. Vạn Lý Trường Thành", "D. Đấu trường Colosseum"], ans: "B" },
-        { q: "Tôn giáo nào ra đời ở Ấn Độ thời cổ đại và sau đó lan truyền rộng rãi?", opts: ["A. Hồi giáo", "B. Thiên Chúa giáo", "C. Phật giáo", "D. Do Thái giáo"], ans: "C" },
-        { q: "Triết học nào có ảnh hưởng sâu sắc nhất đến phong kiến Trung Hoa?", opts: ["A. Nho giáo", "B. Chủ nghĩa khắc kỷ", "C. Phật giáo", "D. Đạo giáo"], ans: "A" },
-        { q: "Ai Cập cổ đại nổi tiếng với thành tựu toán học nào?", opts: ["A. Định lý Pytago", "B. Hệ đếm thập phân và hình học tính diện tích", "C. Số Pi chính xác đến 10 chữ số", "D. Lượng giác học"], ans: "B" },
-        { q: "Ý nghĩa lớn nhất của việc phát minh ra chữ viết là gì?", opts: ["A. Giúp trang trí công trình", "B. Lưu giữ tri thức và truyền lại cho đời sau", "C. Phục vụ việc buôn bán", "D. Dùng để khắc đá"], ans: "B" },
-        { q: "Chế độ xã hội phổ biến ở phương Đông cổ đại là gì?", opts: ["A. Chiếm hữu nô lệ", "B. Phong kiến tập quyền", "C. Nhà nước chuyên chế cổ đại", "D. Tư bản chủ nghĩa"], ans: "C" },
-        { q: "Chế độ xã hội phổ biến ở phương Tây cổ đại (Hy Lạp, Rô-ma) là gì?", opts: ["A. Chiếm hữu nô lệ", "B. Xã hội nguyên thủy", "C. Phong kiến phân quyền", "D. Xã hội công xã"], ans: "A" },
-        { q: "Đặc điểm kinh tế chủ đạo của các quốc gia cổ đại phương Đông là gì?", opts: ["A. Thương nghiệp biển", "B. Nông nghiệp lúa nước", "C. Chăn nuôi du mục", "D. Công nghiệp thủ công"], ans: "B" },
-        { q: "Đặc điểm kinh tế chủ đạo của các quốc gia cổ đại phương Tây là gì?", opts: ["A. Nông nghiệp thâm canh", "B. Thủ công nghiệp và thương nghiệp biển", "C. Trồng lúa nước", "D. Khai thác mỏ"], ans: "B" },
-        { q: "Phát minh quan trọng nào giúp con người bắt đầu bước vào thời đại kim khí?", opts: ["A. Luyện đồng và sắt", "B. Chế tạo lửa", "C. Làm gốm", "D. Chế tạo cung tên"], ans: "A" },
-        { q: "Người nguyên thủy ở Việt Nam đã biết sử dụng công cụ bằng đá qua kỹ thuật gì?", opts: ["A. Ghè đẽo, mài đá, cưa đá", "B. Đúc gang", "C. Luyện thép", "D. Hàn kim loại"], ans: "A" },
-        { q: "Nền văn hóa khảo cổ mở đầu thời đại đồng thau ở Việt Nam là gì?", opts: ["A. Văn hóa Phùng Nguyên", "B. Văn hóa Đông Sơn", "C. Văn hóa Sa Huỳnh", "D. Văn hóa Óc Eo"], ans: "A" },
-        { q: "Đỉnh cao của văn hóa đồ đồng ở Việt Nam ứng với nền văn hóa nào?", opts: ["A. Văn hóa Đông Sơn", "B. Văn hóa Đa Bút", "C. Văn hóa Hòa Bình", "D. Văn hóa Bắc Sơn"], ans: "A" },
-        { q: "Trống đồng Đông Sơn là biểu trưng cho điều gì?", opts: ["A. Kỹ thuật luyện kim và văn hóa đỉnh cao của cư dân Việt cổ", "B. Nền văn minh lúa nước thuần túy", "C. Nền thương nghiệp đường biển phát triển", "D. Kiến trúc cung đình"], ans: "A" },
-        { q: "Nhà nước đầu tiên trong lịch sử Việt Nam là gì?", opts: ["A. Văn Lang - Âu Lạc", "B. Đại Cồ Việt", "C. Đại Việt", "D. Vạn Xuân"], ans: "A" },
-        { q: "Kinh đô của nhà nước Văn Lang đặt ở đâu?", opts: ["A. Cổ Loa (Đông Anh, Hà Nội)", "B. Phong Châu (Phú Thọ)", "C. Hoa Lư (Ninh Bình)", "D. Thăng Long (Hà Nội)"], ans: "B" },
-        { q: "Người đứng đầu nhà nước Văn Lang có vương hiệu là gì?", opts: ["A. Hoàng đế", "B. Hùng Vương", "C. Thiên tử", "D. Quốc vương"], ans: "B" },
-        { q: "Kinh đô của nhà nước Âu Lạc (An Dương Vương) đặt ở đâu?", opts: ["A. Phong Châu", "B. Cổ Loa", "C. Thiên Trường", "D. Phú Xuân"], ans: "B" },
-        { q: "Thành Cổ Loa được thiết kế theo kiểu kiến trúc độc đáo nào?", opts: ["A. Hình vuông nhiều lớp", "B. Hình xoắn ốc (Loa thành)", "C. Hình chữ nhật kiên cố", "D. Hình tròn khép kín"], ans: "B" },
-        { q: "Loại vũ khí nổi tiếng nào gắn liền với truyền thuyết nỏ thần An Dương Vương?", opts: ["A. Nỏ bắn nhiều mũi tên (nỏ liên châu)", "B. Cung tên đồng", "C. Giáo dài", "D. Kiếm ngắn"], ans: "A" },
-        { q: "Nguyên nhân chính dẫn đến sự sụp đổ của nhà nước Âu Lạc vào năm 179 TCN là gì?", opts: ["A. Do thiên tai lũ lụt", "B. Do nội bộ mất đoàn kết và sự tấn công của Triệu Đà", "C. Do dịch bệnh bùng phát", "D. Do nhân dân nổi dậy lật đổ"], ans: "B" },
-        { q: "Thời kỳ Bắc thuộc trong lịch sử Việt Nam kéo dài khoảng bao nhiêu năm?", opts: ["A. Hơn 500 năm", "B. Gần 1000 năm", "C. 50 năm", "D. 200 năm"], ans: "B" },
-        { q: "Cuộc khởi nghĩa mở đầu thời kỳ đấu tranh chống Bắc thuộc của nhân dân ta là gì?", opts: ["A. Khởi nghĩa Hai Bà Trưng", "B. Khởi nghĩa Bà Triệu", "C. Khởi nghĩa Lý Bí", "D. Khởi nghĩa Mai Hắc Đế"], ans: "A" },
-        { q: "Năm 40 TCN diễn ra sự kiện lịch sử quan trọng nào ở nước ta?", opts: ["A. Ngô Quyền đánh tan quân Nam Hán", "B. Hai Bà Trưng phất cờ khởi nghĩa chống quân Đông Hán", "C. Lý Bí lập nước Vạn Xuân", "D. Khởi nghĩa Lam Sơn thắng lợi"], ans: "B" }
+        { q: "Hiện thực lịch sử có đặc điểm nào dưới đây?", opts: ["A. Mang tính chủ quan của người viết.", "B. Tồn tại khách quan, không thể thay đổi.", "C. Có thể thay đổi tùy theo thời gian.", "D. Do nhà nghiên cứu tưởng tượng ra."], ans: "B" },
+        { q: "Lịch sử được con người nhận thức khác với hiện thực lịch sử ở điểm nào?", opts: ["A. Tồn tại hoàn toàn khách quan.", "B. Không bao giờ thay đổi.", "C. Mang tính chủ quan của người nghiên cứu.", "D. Phản ánh đúng tuyệt đối 100% quá khứ."], ans: "C" },
+        { q: "Đối tượng nghiên cứu của Sử học là gì?", opts: ["A. Tương lai phát triển của xã hội.", "B. Toàn bộ quá khứ của loài người.", "C. Chỉ các cuộc chiến tranh giữ nước.", "D. Các quy luật tự nhiên và vũ trụ."], ans: "B" },
+        { q: "Chức năng nào sau đây KHÔNG phải của Sử học?", opts: ["A. Khôi phục hiện thực lịch sử.", "B. Giáo dục tư tưởng, tình cảm, đạo đức.", "C. Dự đoán chính xác 100% mọi việc tương lai.", "D. Cung cấp tri thức khoa học cho đời sống."], ans: "C" },
+        { q: "Nhiệm vụ cốt lõi của Sử học bao gồm những gì?", opts: ["A. Nhận thức, giáo dục, dự báo.", "B. Kinh tế, chính trị, ngoại giao.", "C. Khảo cổ, sưu tầm, trưng bày.", "D. Bảo tồn, trùng tu, phát triển."], ans: "A" },
+        { q: "Nguyên tắc quan trọng nhất trong việc bảo tồn di sản văn hóa là gì?", opts: ["A. Hiện đại hóa để thu hút khách du lịch.", "B. Giữ gìn tối đa tính nguyên gốc của di tích.", "C. Thay đổi kiến trúc cho hợp thời đại.", "D. Phá đi xây mới hoàn toàn khang trang hơn."], ans: "B" },
+        { q: "Mối quan hệ giữa Sử học và du lịch được thể hiện như thế nào?", opts: ["A. Hai lĩnh vực độc lập hoàn toàn.", "B. Du lịch kìm hãm sự phát triển của Sử học.", "C. Sử học cung cấp giá trị cốt lõi cho du lịch, du lịch hỗ trợ bảo tồn di sản.", "D. Sử học không có giá trị gì đối với du lịch."], ans: "C" },
+        { q: "Tại sao con người cần phải học tập lịch sử suốt đời?", opts: ["A. Vì tri thức lịch sử rất rộng lớn và luôn được bổ sung, cập nhật.", "B. Để phục vụ duy nhất cho các kỳ thi ở trường phổ thông.", "C. Vì lịch sử là môn học bắt buộc duy nhất.", "D. Để sau này trở thành nhà khảo cổ học chuyên nghiệp."], ans: "A" },
+        { q: "Sự kiện Vua Bảo Đại thoái vị (30/8/1945) thuộc phạm trù nào?", opts: ["A. Hiện thực lịch sử", "B. Lịch sử được nhận thức", "C. Sử liệu truyền miệng", "D. Khoa học giả định"], ans: "A" },
+        { q: "Bước đầu tiên trong quy trình thu thập và xử lý sử liệu là gì?", opts: ["A. Viết báo cáo tổng kết nghiên cứu.", "B. Lập thư mục và danh mục các sử liệu cần thu thập.", "C. Phỏng vấn trực tiếp nhân chứng lịch sử.", "D. Đem các hiện vật đi phân tích phóng xạ."], ans: "B" },
+        // Câu hỏi mở rộng bám sát đề cương
+        { q: "Nội dung nào dưới đây phản ánh đúng chức năng xã hội của Sử học?", opts: ["A. Tái hiện hoàn toàn chính xác mọi chi tiết nhỏ của quá khứ.", "B. Giáo dục lòng yêu nước, tinh thần dân tộc và rút ra bài học kinh nghiệm.", "C. Thay đổi bản chất của các sự kiện đã xảy ra trong lịch sử.", "D. Dự báo trước kết quả của tất cả các cuộc chiến tranh."], ans: "B" },
+        { q: "Yếu tố nào sau đây đóng vai trò là nguồn sử liệu quan trọng giúp khôi phục lịch sử thời kỳ cổ đại khi chưa có chữ viết?", opts: ["A. Sử liệu truyền miệng và sử liệu hiện vật (khảo cổ học).", "B. Tài liệu điện tử và mạng xã hội.", "C. Các bản ghi âm phỏng vấn hiện đại.", "D. Các văn bản hiệp ước ngoại giao."], ans: "A" }
     ];
 
     function renderQuiz() {
@@ -462,52 +441,78 @@
 
     function handleLogin() {
         const username = document.getElementById('username-input').value.trim();
-        if (!username) {
-            alert('Vui lòng nhập tên của bạn!');
-            return;
-        }
+        if (!username) { alert('Vui lòng nhập tên của bạn!'); return; }
         localStorage.setItem('history_user', username);
         showApp(username);
     }
-
     function handleLogout() {
         localStorage.removeItem('history_user');
         document.getElementById('login-screen').style.display = 'block';
         document.getElementById('app-screen').style.display = 'none';
     }
-
     function showApp(username) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('app-screen').style.display = 'block';
         document.getElementById('display-user').innerText = username;
         loadLeaderboard();
     }
-
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active');
         event.target.classList.add('active');
     }
 
+    async function loadLeaderboard() {
+        const tbody = document.getElementById('leaderboard-body');
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-light);">Đang tải dữ liệu xếp hạng...</td></tr>`;
+        
+        try {
+            let lb = JSON.parse(localStorage.getItem('history_lb_global') || '[]');
+            renderTable(lb);
+        } catch (e) {
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--danger);">Không thể tải bảng xếp hạng.</td></tr>`;
+        }
+    }
+
+    function renderTable(lb) {
+        const tbody = document.getElementById('leaderboard-body');
+        tbody.innerHTML = '';
+        if (lb.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-light);">Chưa có lượt nộp bài nào.</td></tr>`;
+            return;
+        }
+        lb.sort((a, b) => b.score - a.score);
+        lb.forEach((item, index) => {
+            tbody.innerHTML += `<tr><td>#${index + 1}</td><td>${item.name}</td><td><strong>${item.score} điểm</strong></td></tr>`;
+        });
+    }
+
     function submitQuiz() {
         let score = 0;
+        // Tính điểm trắc nghiệm nhiều lựa chọn (chia đều tổng điểm 10 cho các câu)
+        const qPoint = 7 / quizData.length;
         quizData.forEach((item, idx) => {
             const selected = document.querySelector(`input[name="q${idx}"]:checked`);
-            if (selected && selected.value === item.ans) {
-                score += (10 / quizData.length);
-            }
+            if (selected && selected.value === item.ans) { score += qPoint; }
         });
+        
+        // Tính điểm Đúng/Sai (5 câu, tổng 3 điểm)
+        const dsAnswers = { ds1: 'S', ds2: 'D', ds3: 'S', ds4: 'S', ds5: 'D' };
+        const dsPoint = 3 / Object.keys(dsAnswers).length;
+        for (let key in dsAnswers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (selected && selected.value === dsAnswers[key]) { score += dsPoint; }
+        }
 
         const finalScore = Math.round(score * 10) / 10;
         alert(`Bạn đạt được ${finalScore}/10 điểm!`);
         
         const username = localStorage.getItem('history_user') || 'Học sinh ẩn danh';
-        let lb = JSON.parse(localStorage.getItem('history_lb') || '[]');
+        
+        let lb = JSON.parse(localStorage.getItem('history_lb_global') || '[]');
         lb.push({ name: username, score: finalScore });
-        lb.sort((a, b) => b.score - a.score);
-        localStorage.setItem('history_lb', JSON.stringify(lb));
+        localStorage.setItem('history_lb_global', JSON.stringify(lb));
 
         loadLeaderboard();
         switchTab('leaderboard');
@@ -515,33 +520,10 @@
         document.querySelectorAll('.tab-btn')[3].classList.add('active');
     }
 
-    function loadLeaderboard() {
-        const lb = JSON.parse(localStorage.getItem('history_lb') || '[]');
-        const tbody = document.getElementById('leaderboard-body');
-        tbody.innerHTML = '';
-        
-        if (lb.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-light);">Chưa có lượt nộp bài nào.</td></tr>`;
-            return;
-        }
-
-        lb.forEach((item, index) => {
-            tbody.innerHTML += `
-                <tr>
-                    <td>#${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td><strong>${item.score} điểm</strong></td>
-                </tr>
-            `;
-        });
-    }
-
     window.onload = function() {
         renderQuiz();
         const savedUser = localStorage.getItem('history_user');
-        if (savedUser) {
-            showApp(savedUser);
-        }
+        if (savedUser) { showApp(savedUser); }
     }
 </script>
 
