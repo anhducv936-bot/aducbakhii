@@ -3,293 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn Tập Kiểm Tra Giữa Kì I - Môn Lịch Sử 10</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ôn Tập Giữa Kì Lịch Sử 10 - THPT Uông Bí</title>
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --success: #10b981;
-            --error: #ef4444;
-            --bg: #f8fafc;
+            --primary: #1a73e8;
+            --primary-dark: #1557b0;
+            --accent: #e8f0fe;
+            --bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
+            --text: #202124;
+            --text-light: #5f6368;
+            --border: #dadce0;
+            --success: #34a853;
+            --danger: #ea4335;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: var(--card-bg); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; padding: 30px; }
-        
-        /* Modal Đăng nhập & Xếp hạng */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-        .modal-box { background: #fff; padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .modal-box h2 { margin-bottom: 15px; color: var(--primary); }
-        .modal-box input { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 8px; font-size: 16px; margin-bottom: 20px; outline: none; transition: border 0.3s; }
-        .modal-box input:focus { border-color: var(--primary); }
-        .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; }
-        .btn:hover { background: var(--primary-hover); }
 
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
-        .user-info { font-weight: 600; color: var(--primary); font-size: 18px; }
-        .timer { background: #e0e7ff; color: var(--primary); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; }
-        
-        /* Tabs */
-        .tabs { display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 10px; flex-wrap: wrap; }
-        .tab-btn { background: #f1f5f9; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; color: var(--text-light); transition: all 0.3s; }
-        .tab-btn.active { background: var(--primary); color: white; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
 
-        /* Quiz Styles */
-        .question-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .question-title { font-weight: 600; margin-bottom: 15px; font-size: 16px; }
-        .options-grid { display: grid; gap: 10px; }
-        .option-btn { text-align: left; padding: 12px 15px; background: white; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 15px; transition: all 0.2s; }
-        .option-btn:hover { background: #f1f5f9; border-color: var(--primary); }
-        .option-btn.correct { background: #d1fae5; border-color: var(--success); color: #065f46; font-weight: 600; }
-        .option-btn.incorrect { background: #fee2e2; border-color: var(--error); color: #991b1b; font-weight: 600; }
-        .explanation { margin-top: 10px; font-size: 14px; color: var(--text-light); font-style: italic; display: none; }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        /* Login Screen */
+        #login-screen {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #login-screen input {
+            width: 100%;
+            max-width: 320px;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #login-screen input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* App Layout */
+        #app-screen {
+            display: none;
+        }
+
+        .user-welcome {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--accent);
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .tab-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Flashcard 3D Styles */
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+
+        .card-front {
+            background: white;
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card-back {
+            background: var(--primary);
+            color: white;
+            font-size: 16px;
+            transform: rotateY(180deg);
+        }
+
+        .card-hint {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        .card-back .card-hint {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        /* Quiz & Essay Styles */
+        .question-box {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .question-box p {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .options label {
+            display: block;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .options label:hover {
+            background: var(--accent);
+        }
+
+        .options input {
+            margin-right: 8px;
+        }
 
         /* Leaderboard */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: #f1f5f9; font-weight: 600; }
-        tr:hover { background: #f8fafc; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
 
-        .submit-section { text-align: center; margin-top: 30px; }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--accent);
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Modal Nhập Tên -->
-    <div id="loginModal" class="modal-overlay">
-        <div class="modal-box">
-            <h2>🎓 Ôn Tập Lịch Sử 10</h2>
-            <p style="margin-bottom: 15px; color: var(--text-light);">Nhập tên hoặc biệt danh của bạn để bắt đầu làm bài và lưu điểm lên bảng xếp hạng:</p>
-            <input type="text" id="usernameInput" placeholder="Ví dụ: Nguyễn Văn A..." autocomplete="off">
-            <button class="btn" onclick="startApp()">🚀 Bắt đầu ôn tập ngay</button>
-        </div>
+<div class="container">
+    <h1>Ôn Tập Lịch Sử 10</h1>
+    <p class="subtitle">THPT Uông Bí - Kỳ thi Giữa kì</p>
+
+    <!-- ĐĂNG NHẬP -->
+    <div id="login-screen">
+        <p style="margin-bottom: 16px; color: var(--text-light);">Nhập tên hoặc mã số của bạn để bắt đầu làm bài và lưu điểm:</p>
+        <input type="text" id="username-input" placeholder="Ví dụ: Nguyễn Văn A - 10A1">
+        <br>
+        <button class="btn" onclick="handleLogin()">Vào Ôn Tập</button>
     </div>
 
-    <div class="container">
-        <header>
-            <div>
-                <h1>📖 Đề Cương Ôn Tập Giữa Kì I - Lịch Sử 10</h1>
-                <p style="color: var(--text-light); font-size: 14px;">Trường THPT Uông Bí[span_0](start_span)[span_0](end_span)</p>
-            </div>
-            <div>
-                <span class="user-info" id="displayUser">Học sinh: Khách</span>
-                <div class="timer" id="timer">⏱️ Thời gian: 00:00</div>
-            </div>
-        </header>
+    <!-- GIAO DIỆN CHÍNH -->
+    <div id="app-screen">
+        <div class="user-welcome">
+            <span>Xin chào, <strong id="display-user"></strong>!</span>
+            <button onclick="handleLogout()" style="background:none; border:none; color:var(--danger); cursor:pointer; font-weight:600;">Đổi tên</button>
+        </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('quiz')">🎯 Trắc nghiệm (20 câu)</button>
-            <button class="tab-btn" onclick="switchTab('essay')">✍️ Tự luận trọng tâm</button>
-            <button class="tab-btn" onclick="switchTab('leaderboard')">🏆 Bảng Xếp Hạng</button>
+            <button class="tab-btn active" onclick="switchTab('flashcard')">Flashcard 3D</button>
+            <button class="tab-btn" onclick="switchTab('quiz')">Trắc nghiệm</button>
+            <button class="tab-btn" onclick="switchTab('essay')">Tự luận & Tư liệu</button>
+            <button class="tab-btn" onclick="switchTab('leaderboard')">Bảng xếp hạng</button>
         </div>
 
-        <!-- TAB 1: TRẮC NGHIỆM -->
-        <div id="quiz" class="tab-content active">
-            <div id="quizContainer"></div>
-            <div class="submit-section">
-                <button class="btn" style="max-width: 300px;" onclick="submitQuiz()">🏆 Nộp bài & Lưu kết quả</button>
+        <!-- TAB 1: FLASHCARD -->
+        <div id="flashcard" class="tab-content active">
+            <div style="text-align: center; margin-bottom: 10px;">
+                <span id="card-counter" style="font-size: 14px; color: var(--text-light);">Thẻ 1 / 5</span>
+            </div>
+            <div class="flashcard-container" onclick="flipCard()">
+                <div class="card-inner" id="cardInner">
+                    <div class="card-front">
+                        <span id="card-front-text">Lịch sử là gì?</span>
+                        <span class="card-hint">(Chạm để lật xem đáp án)</span>
+                    </div>
+                    <div class="card-back">
+                        <span id="card-back-text">Là toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người.</span>
+                        <span class="card-hint">(Chạm để quay lại)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-controls">
+                <button class="btn" style="max-width: 140px; background: var(--text-light);" onclick="prevCard()">Trước</button>
+                <button class="btn" style="max-width: 140px;" onclick="nextCard()">Tiếp</button>
             </div>
         </div>
 
-        <!-- TAB 2: TỰ LUẬN -->
+        <!-- TAB 2: TRẮC NGHIỆM -->
+        <div id="quiz" class="tab-content">
+            <div class="question-box">
+                <p>Câu 1: Đối tượng nghiên cứu của khoa học lịch sử là gì?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A. Tương lai của xã hội loài người.</label>
+                    <label><input type="radio" name="q1" value="B"> B. Toàn bộ quá khứ của loài người từ khi xuất hiện đến nay.</label>
+                    <label><input type="radio" name="q1" value="C"> C. Các quy luật phát triển của tự nhiên.</label>
+                    <label><input type="radio" name="q1" value="D"> D. Sự phát triển kinh tế trong hiện tại.</label>
+                </div>
+            </div>
+            <div class="question-box">
+                <p>Câu 2: Yếu tố nào dưới đây là nguồn sử liệu quan trọng nhất để khôi phục lịch sử thời kỳ cổ đại?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A. Sử liệu truyền miệng.</label>
+                    <label><input type="radio" name="q2" value="B"> B. Sử liệu hiện vật (khảo cổ học).</label>
+                    <label><input type="radio" name="q2" value="C"> C. Sử liệu ảnh tư liệu.</label>
+                    <label><input type="radio" name="q2" value="D"> D. Tài liệu điện tử.</label>
+                </div>
+            </div>
+            <button class="btn" onclick="submitQuiz()" style="width: 100%; max-width: 100%;">Nộp bài & Lưu kết quả</button>
+        </div>
+
+        <!-- TAB 3: TỰ LUẬN & TƯ LIỆU -->
         <div id="essay" class="tab-content">
-            <div class="question-card">
-                <h3 class="question-title">Câu 1: Khái niệm lịch sử và khoa học lịch sử[span_1](start_span)[span_1](end_span)</h3>
-                <p><b>- Lịch sử:</b> Toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người (gồm hiện thực lịch sử và lịch sử được con người nhận thức)[span_2](start_span)[span_2](end_span).</p>
-                <p><b>- Khoa học lịch sử (Sử học):</b> Ngành khoa học nghiên cứu, phục dựng lại quá khứ của loài người một cách khách quan dựa trên sử liệu[span_3](start_span)[span_3](end_span).</p>
+            <div class="question-box">
+                <p>Câu hỏi Tự luận 1: Phân tích mối quan hệ giữa lịch sử, văn hóa với sự phát triển du lịch tại Hạ Long Bay hoặc Yên Tử.</p>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 8px;">
+                    <strong>Gợi ý trả lời:</strong> Các di sản văn hóa và lịch sử (như quần thể di tích Yên Tử, vịnh Hạ Long) cung cấp giá trị cốt lõi, nguồn tài nguyên nhân văn phong phú để phát triển du lịch bền vững, thu hút du khách trong và ngoài nước, đồng thời du lịch quay lại hỗ trợ bảo tồn di sản.
+                </p>
             </div>
-            <div class="question-card">
-                <h3 class="question-title">Câu 2: Đối tượng, chức năng và nhiệm vụ của Sử học[span_4](start_span)[span_4](end_span)</h3>
-                <p><b>- Đối tượng:</b> Toàn bộ quá khứ của loài người (cá nhân, cộng đồng, quốc gia đến nhân loại)[span_5](start_span)[span_5](end_span).</p>
-                <p><b>- Chức năng:</b> Chức năng khoa học (khôi phục sự kiện, tìm quy luật) và Chức năng xã hội (giáo dục tư tưởng, đạo đức, rút ra bài học kinh nghiệm)[span_6](start_span)[span_6](end_span).</p>
-                <p><b>- Nhiệm vụ:</b> Nhận thức, giáo dục và dự báo tương lai[span_7](start_span)[span_7](end_span).</p>
-            </div>
-            <div class="question-card">
-                <h3 class="question-title">Câu 3-6: Học tập lịch sử suốt đời & Mối liên hệ với cuộc sống[span_8](start_span)[span_8](end_span)</h3>
-                <p><b>- Tại sao học suốt đời:</b> Tri thức lịch sử vô cùng rộng lớn, luôn biến đổi và phát triển không ngừng khi có sử liệu hoặc góc nhìn mới; giúp con người thích ứng với xã hội hiện đại[span_9](start_span)[span_9](end_span).</p>
-                <p><b>- Liên hệ thực tế:</b> Giúp lý giải các vấn đề thời sự trong nước và quốc tế, vận dụng bài học quá khứ (như đại đoàn kết dân tộc trong đại dịch Covid-19) vào đời sống[span_10](start_span)[span_10](end_span).</p>
-            </div>
-            <div class="question-card">
-                <h3 class="question-title">Câu 7, 8, 9: Tác động qua lại giữa Lịch sử, Văn hoá và Du lịch tại Hạ Long, Yên Tử, Cố đô Huế[span_11](start_span)[span_11](end_span)</h3>
-                <p><b>1. Lịch sử, văn hóa là nền tảng, nguồn lực cho du lịch:</b> Tạo sản phẩm du lịch độc đáo, hấp dẫn (di chỉ khảo cổ, kiến trúc cung đình, di tích tâm linh, văn hóa làng chài)[span_12](start_span)[span_12](end_span).</p>
-                <p><b>2. Phát triển du lịch thúc đẩy bảo tồn:</b> Mang lại nguồn thu tài chính để trùng tu di tích, quảng bá hình ảnh đất nước và nâng cao ý thức giữ gìn di sản của cộng đồng[span_13](start_span)[span_13](end_span).</p>
+            <div class="question-box">
+                <p>Câu hỏi Tự luận 2: Ý nghĩa của việc học tập lịch sử suốt đời trong xã hội hiện đại.</p>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 8px;">
+                    <strong>Gợi ý trả lời:</strong> Giúp cập nhật tri thức mới, bồi dưỡng lòng yêu nước, tư duy phản biện, và thích ứng linh hoạt với sự thay đổi của xã hội hiện đại.
+                </p>
             </div>
         </div>
 
-        <!-- TAB 3: BẢNG XẾP HẠNG -->
+        <!-- TAB 4: BẢNG XẾP HẠNG -->
         <div id="leaderboard" class="tab-content">
-            <h2>🏆 Bảng Xếp Hạng Thành Tích</h2>
-            <p style="color: var(--text-light); margin-bottom: 15px;">Danh sách những học sinh hoàn thành bài trắc nghiệm nhanh và chính xác nhất:</p>
+            <h3 style="margin-bottom: 12px; color: var(--primary);">Bảng xếp hạng học sinh</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Hạng</th>
-                        <th>Học sinh</th>
+                        <th>Họ tên</th>
                         <th>Điểm số</th>
-                        <th>Thời gian</th>
                     </tr>
                 </thead>
-                <tbody id="leaderboardBody">
-                    <tr><td colspan="4" style="text-align: center;">Chưa có dữ liệu. Hãy làm bài trắc nghiệm để ghi danh!</td></tr>
+                <tbody id="leaderboard-body">
+                    <!-- Dữ liệu sẽ tự động điền -->
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 
-    <script>
-        let currentUser = "";
-        let startTime, timerInterval;
+<script>
+    // Dữ liệu Flashcard
+    const flashcards = [
+        { front: "Lịch sử là gì?", back: "Toàn bộ những gì đã diễn ra trong quá khứ của xã hội loài người." },
+        { front: "Hiện thực lịch sử là gì?", back: "Là tất cả những gì đã diễn ra trong quá khứ, tồn tại khách quan không phụ thuộc vào ý muốn của con người." },
+        { front: "Nhận thức lịch sử là gì?", back: "Là toàn bộ những tri thức, hiểu biết, sự suy nghĩ và tình cảm của con người về quá khứ." },
+        { front: "Sử liệu học là gì?", back: "Là hệ thống tư liệu (vật chất, chữ viết, truyền miệng...) cung cấp thông tin về quá khứ." },
+        { front: "Mối quan hệ Sử học và Du lịch?", back: "Lịch sử cung cấp tài nguyên, giá trị cốt lõi cho du lịch văn hóa; du lịch tạo nguồn lực hỗ trợ bảo tồn di sản." }
+    ];
+
+    let currentCardIndex = 0;
+
+    function updateCard() {
+        document.getElementById('card-front-text').innerText = flashcards[currentCardIndex].front;
+        document.getElementById('card-back-text').innerText = flashcards[currentCardIndex].back;
+        document.getElementById('card-counter').innerText = `Thẻ ${currentCardIndex + 1} / ${flashcards.length}`;
+        document.getElementById('cardInner').classList.remove('flipped');
+    }
+
+    function flipCard() {
+        document.getElementById('cardInner').classList.toggle('flipped');
+    }
+
+    function nextCard() {
+        currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+        updateCard();
+        event.stopPropagation();
+    }
+
+    function prevCard() {
+        currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+        updateCard();
+        event.stopPropagation();
+    }
+
+    // Xử lý đăng nhập & tab
+    function handleLogin() {
+        const username = document.getElementById('username-input').value.trim();
+        if (!username) {
+            alert('Vui lòng nhập tên của bạn!');
+            return;
+        }
+        localStorage.setItem('history_user', username);
+        showApp(username);
+    }
+
+    function handleLogout() {
+        localStorage.removeItem('history_user');
+        document.getElementById('login-screen').style.display = 'block';
+        document.getElementById('app-screen').style.display = 'none';
+    }
+
+    function showApp(username) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app-screen').style.display = 'block';
+        document.getElementById('display-user').innerText = username;
+        loadLeaderboard();
+    }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function submitQuiz() {
         let score = 0;
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
 
-        const quizData = [
-            { q: "Câu 1: Khái niệm lịch sử gắn liền với hai yếu tố cơ bản là lịch sử được con người nhận thức và...", options: ["A. hiện thực lịch sử.", "B. sự kiện hiện tại.", "C. sự kiện tương lai.", "D. khoa học lịch sử."], correct: 0, exp: "Đáp án đúng là A (Theo định nghĩa cơ bản trong SGK Lịch sử 10)." },
-            { q: "Câu 2: Toàn bộ những tri thức, hiểu biết, những ý niệm và hình dung của con người về quá khứ được gọi là", options: ["A. hiện thực lịch sử.", "B. lịch sử được con người nhận thức.", "C. sự kiện tương lai.", "D. nền kinh tế xanh."], correct: 1, exp: "Đáp án đúng là B (Lịch sử được con người nhận thức)." },
-            { q: "Câu 3: Giáo dục tư tưởng, tình cảm, đạo đức và rút ra bài học kinh nghiệm là chức năng nào sau đây của sử học?", options: ["A. Xã hội.", "B. Khoa học.", "C. Phục hồi.", "D. Dự báo."], correct: 0, exp: "Đáp án đúng là A (Chức năng xã hội)." },
-            { q: "Câu 4: Ngày 30-8-1945, vua Bảo Đại thoái vị, chế độ phong kiến ở Việt Nam sụp đổ là biểu hiện của", options: ["A. hiện thực lịch sử.", "B. lịch sử được con người nhận thức.", "C. quy luật của lịch sử.", "D. tính tất yếu."], correct: 0, exp: "Đáp án đúng là A (Hiện thực lịch sử diễn ra khách quan)." },
-            { q: "Câu 5: So với hiện thực lịch sử, lịch sử được con người nhận thức có đặc điểm khác nào sau đây?", options: ["A. Có tính sự đa dạng.", "B. Có tính chủ quan.", "C. Tồn tại độc lập.", "D. Tồn tại khách quan."], correct: 1, exp: "Đáp án đúng là B (Nhận thức lịch sử mang tính chủ quan)." },
-            { q: "Câu 6: Nguyên nhân dẫn đến sự khác biệt giữa hiện thực lịch sử và lịch sử được con người nhận thức phụ thuộc vào...", options: ["A. nguyên tắc nghiên cứu.", "B. nhiệm vụ của sử học.", "C. chức năng của sử học.", "D. năng lực của người tìm hiểu lịch sử."], correct: 3, exp: "Đáp án đúng là D." },
-            { q: "Câu 7: Sử liệu đóng vai trò là cầu nối giữa", options: ["A. khảo sát và tìm kiếm.", "B. quá khứ và thực tại.", "C. hiện thực lịch sử và tri thức lịch sử.", "D. phân loại và đánh giá."], correct: 2, exp: "Đáp án đúng là C." },
-            { q: "Câu 8: Bước đầu tiên trong quy trình thu thập, xử lý thông tin và sử liệu là", options: ["A. sưu tầm, đọc và ghi chép.", "B. chọn lọc và phân loại.", "C. lập thư mục và danh mục các sử liệu cần thu thập.", "D. xác minh, đánh giá."], correct: 2, exp: "Đáp án đúng là C." },
-            { q: "Câu 9: Toàn bộ những hình thức khác nhau của tư liệu lịch sử, chứa đựng thông tin về quá khứ được gọi là", options: ["A. sử liệu", "B. truyền thuyết", "C. ngữ liệu", "D. văn bản"], correct: 0, exp: "Đáp án đúng là A (Sử liệu)." },
-            { q: "Câu 10: Cần học tập lịch sử suốt đời vì tri thức lịch sử", options: ["A. quyết định mọi sự vật.", "B. rất rộng lớn và đa dạng, lại biến đổi và phát triển không ngừng.", "C. chưa hoàn toàn chính xác.", "D. giúp hội nhập nhanh."], correct: 1, exp: "Đáp án đúng là B." },
-            { q: "Câu 11: Phỏng vấn Đại tướng Võ Nguyên Giáp về chiến dịch Điện Biên Phủ năm 1954 là biểu hiện của quá trình", options: ["A. xử lí thông tin.", "B. thu thập sử liệu.", "C. đánh giá nguồn gốc.", "D. xác minh nguồn gốc."], correct: 1, exp: "Đáp án đúng là B (Thu thập sử liệu)." },
-            { q: "Câu 12: Nội dung nào phản ánh đúng mối liên hệ giữa kiến thức lịch sử với cuộc sống hiện tại?", options: ["A. Lịch sử giúp con người hiểu rõ hơn những vấn đề thời sự trong nước và quốc tế.", "B. Giúp thay đổi quá khứ.", "C. Là yếu tố quyết định thành công.", "D. Quyết định khoa học kĩ thuật."], correct: 0, exp: "Đáp án đúng là A." },
-            { q: "Câu 13: Trong đại dịch Covid-19, cả nước đồng lòng thực hiện biện pháp phòng chống là vận dụng bài học lịch sử nào?", options: ["A. Đại đoàn kết toàn dân tộc.", "B. Tư tưởng trung quân ái quốc.", "C. Tôn sư trọng đạo.", "D. Uống nước nhớ nguồn."], correct: 0, exp: "Đáp án đúng là A." },
-            { q: "Câu 14: Nội dung nào sau đây là mối quan hệ giữa Sử học với di sản văn hóa?", options: ["A. Bảo vệ và làm mới di sản.", "B. Bảo tồn và phát huy giá trị các di sản.", "C. Bảo tồn và khôi phục.", "D. Bảo tồn và hiện đại hoá."], correct: 1, exp: "Đáp án đúng là B." },
-            { q: "Câu 15: Di sản văn hóa là một bộ phận quan trọng của", options: ["A. toán học.", "B. lịch sử.", "C. công nghệ.", "D. kĩ thuật."], correct: 1, exp: "Đáp án đúng là B (Lịch sử)." },
-            { q: "Câu 16: Cơ sở khoa học cho công tác xác định giá trị, bảo tồn và phát huy di sản là kết quả nghiên cứu của", options: ["A. Sử học.", "B. Địa lí.", "C. Văn học.", "D. Toán học."], correct: 0, exp: "Đáp án đúng là A (Sử học)." },
-            { q: "Câu 17: Bảo tồn và phát huy giá trị các di sản văn hoá KHÔNG phải là hoạt động", options: ["A. tiến hành xây mới các di tích, hiện đại hoá di tích.", "B. đảm bảo phát triển bền vững.", "C. đem lại hiệu quả kinh tế.", "D. hình thành ý thức trách nhiệm."], correct: 0, exp: "Đáp án đúng là A." },
-            { q: "Câu 18: Yếu tố nào sau đây đóng vai trò quyết định trong phát triển du lịch?", options: ["A. Kết quả quá khứ ngành du lịch.", "B. Sản xuất nhà máy.", "C. Những giá trị về lịch sử, văn hoá truyền thống.", "D. Sự đổi mới công trình."], correct: 2, exp: "Đáp án đúng là C." },
-            { q: "Câu 19: Việt Nam được bầu chọn là “Điểm đến hàng đầu châu Á” về", options: ["A. di sản, ẩm thực và văn hoá.", "B. di tích lịch sử và văn hoá.", "C. di sản thiên nhiên.", "D. di sản văn hoá vật thể."], correct: 0, exp: "Đáp án đúng là A." },
-            { q: "Câu 20: Phố cổ Hội An (Quảng Nam), Hoàng thành Thăng Long (Hà Nội) có điểm chung nào?", options: ["A. Sức hấp dẫn của các yếu tố về lịch sử, văn hoá, cảnh quan.", "B. Công nghiệp nặng phát triển.", "C. Cảnh quan hiện đại.", "D. Nhiều khu giải trí."], correct: 0, exp: "Đáp án đúng là A." }
-        ];
+        if (q1 && q1.value === 'B') score += 5;
+        if (q2 && q2.value === 'B') score += 5;
 
-        function startApp() {
-            const name = document.getElementById("usernameInput").value.trim();
-            if(!name) {
-                alert("Vui lòng nhập tên của bạn để tiếp tục!");
-                return;
-            }
-            currentUser = name;
-            document.getElementById("displayUser").innerText = "Học sinh: " + currentUser;
-            document.getElementById("loginModal").style.display = "none";
-            startTimer();
-            renderQuiz();
+        alert(`Bạn đạt được ${score}/10 điểm!`);
+        
+        // Lưu điểm vào LocalStorage cho Bảng xếp hạng
+        const username = localStorage.getItem('history_user') || 'Học sinh ẩn danh';
+        let lb = JSON.parse(localStorage.getItem('history_lb') || '[]');
+        lb.push({ name: username, score: score });
+        lb.sort((a, b) => b.score - a.score);
+        localStorage.setItem('history_lb', JSON.stringify(lb));
+
+        loadLeaderboard();
+        switchTab('leaderboard');
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
+    }
+
+    function loadLeaderboard() {
+        const lb = JSON.parse(localStorage.getItem('history_lb') || '[]');
+        const tbody = document.getElementById('leaderboard-body');
+        tbody.innerHTML = '';
+        
+        if (lb.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-light);">Chưa có lượt nộp bài nào.</td></tr>`;
+            return;
         }
 
-        function startTimer() {
-            let seconds = 0;
-            startTime = Date.now();
-            timerInterval = setInterval(() => {
-                seconds++;
-                let m = Math.floor(seconds / 60).toString().padStart(2, '0');
-                let s = (seconds % 60).toString().padStart(2, '0');
-                document.getElementById("timer").innerText = `⏱️ Thời gian: ${m}:${s}`;
-            }, 1000);
-        }
-
-        function renderQuiz() {
-            const container = document.getElementById("quizContainer");
-            let html = "";
-            quizData.forEach((item, index) => {
-                html += `
-                    <div class="question-card" id="q-card-${index}">
-                        <div class="question-title">${item.q}</div>
-                        <div class="options-grid">
-                `;
-                item.options.forEach((opt, optIndex) => {
-                    html += `<button class="option-btn" onclick="selectOption(${index}, ${optIndex})">${opt}</button>`;
-                });
-                html += `</div><div class="explanation" id="exp-${index}">${item.exp}</div></div>`;
-            });
-            container.innerHTML = html;
-        }
-
-        let userAnswers = {};
-        function selectOption(qIndex, optIndex) {
-            userAnswers[qIndex] = optIndex;
-            const card = document.getElementById(`q-card-${qIndex}`);
-            const buttons = card.querySelectorAll(".option-btn");
-            
-            buttons.forEach((btn, idx) => {
-                btn.style.pointerEvents = "none";
-                if(idx === quizData[qIndex].correct) {
-                    btn.classList.add("correct");
-                } else if(idx === optIndex) {
-                    btn.classList.add("incorrect");
-                }
-            });
-            document.getElementById(`exp-${qIndex}`).style.display = "block";
-        }
-
-        function submitQuiz() {
-            if(Object.keys(userAnswers).length === 0) {
-                alert("Bạn hãy trả lời ít nhất một câu hỏi trước khi nộp bài!");
-                return;
-            }
-            clearInterval(timerInterval);
-            let correctCount = 0;
-            quizData.forEach((item, index) => {
-                if(userAnswers[index] === item.correct) correctCount++;
-            });
-
-            let totalTimeSec = Math.floor((Date.now() - startTime) / 1000);
-            let m = Math.floor(totalTimeSec / 60);
-            let s = totalTimeSec % 60;
-            let timeStr = `${m} phút ${s} giây`;
-
-            alert(`🎉 Bạn đã hoàn thành bài thi!\n⭐ Số câu đúng: ${correctCount}/20\n⏱️ Thời gian: ${timeStr}`);
-            
-            // Lưu vào localStorage làm bảng xếp hạng
-            let lb = JSON.parse(localStorage.getItem("history_lb") || "[]");
-            lb.push({ name: currentUser, score: correctCount, time: timeStr, timeSec: totalTimeSec });
-            lb.sort((a, b) => b.score - a.score || a.timeSec - b.timeSec);
-            localStorage.setItem("history_lb", JSON.stringify(lb));
-
-            updateLeaderboard();
-            switchTab('leaderboard');
-        }
-
-        function updateLeaderboard() {
-            let lb = JSON.parse(localStorage.getItem("history_lb") || "[]");
-            const tbody = document.getElementById("leaderboardBody");
-            if(lb.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">Chưa có dữ liệu.</td></tr>`;
-                return;
-            }
-            let html = "";
-            lb.forEach((item, index) => {
-                let badge = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : `#${index+1}`;
-                html += `<tr>
-                    <td><b>${badge}</b></td>
+        lb.forEach((item, index) => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>#${index + 1}</td>
                     <td>${item.name}</td>
-                    <td><span style="color: var(--primary); font-weight: bold;">${item.score}/20</span></td>
-                    <td>${item.time}</td>
-                </tr>`;
-            });
-            tbody.innerHTML = html;
-        }
+                    <td><strong>${item.score} điểm</strong></td>
+                </tr>
+            `;
+        });
+    }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-            if(tabId === 'leaderboard') updateLeaderboard();
+    window.onload = function() {
+        const savedUser = localStorage.getItem('history_user');
+        if (savedUser) {
+            showApp(savedUser);
         }
+    }
+</script>
 
-        // Tải sẵn bảng xếp hạng nếu có
-        updateLeaderboard();
-    </script>
 </body>
 </html>
